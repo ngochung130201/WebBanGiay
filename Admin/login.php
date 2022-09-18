@@ -1,3 +1,25 @@
+<?php
+    session_start();
+    if(isset($_SESSION['email'])){
+        header('location:admin.php');
+    }
+    if( isset($_POST['dangnhap'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+       if($email == 'admin@gmail.com' && $password == '123'){
+        // tao sesion
+        $_SESSION['email']= $email;
+        $_SESSION['password']= $password;
+          header('location:admin.php');
+ 
+       }
+       else {
+        echo "Email hoặc mật khau sai !";
+        
+       }
+    }
+?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -6,7 +28,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Web ban giay</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,25 +59,25 @@
                     </a>
                 </div>
                 <div class="login-form">
-                    <form>
+                    <form action="login.php" method="POST">
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input name="email" type="email" class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input name="password" type="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"> Remember Me
+                                <input name="remember" type="checkbox"> Remember Me
                             </label>
                             <label class="pull-right">
                                 <a href="#">Forgotten Password?</a>
                             </label>
 
                         </div>
-                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                        <button name="dangnhap" type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Đăng nhập</button>
                         <div class="social-login-content">
                             <div class="social-button">
                                 <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</button>
