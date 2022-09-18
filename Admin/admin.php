@@ -1,3 +1,12 @@
+<?php
+ session_start();
+ if(!isset($_SESSION['email'])){
+    header("location:login.php");
+    exit();
+ };
+
+
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -247,7 +256,13 @@
 
                             <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                        
+                           <a  class="nav-link" name="dangxuat" href="logout.php"><i class="fa fa-power -off">
+                          
+                           </i>
+                           <button style="border: none ;"  type="submit" name="dangxuat">Đăng xuất</button>
+                        </a> 
+                         
                         </div>
                     </div>
 
